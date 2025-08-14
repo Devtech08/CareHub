@@ -48,7 +48,7 @@ export default function DoctorDashboard() {
     .size;
 
   return (
-    <div className="p-8 space-y-8">
+    <div className="p-4 md:p-8 space-y-8">
       <div>
         <h1 className="text-4xl font-bold">Welcome back, Dr. Williams!</h1>
         <p className="text-muted-foreground">
