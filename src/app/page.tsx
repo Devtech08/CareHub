@@ -95,19 +95,21 @@ export default function Home() {
                   </CardContent>
                 </Card>
               </Link>
-               <Card className="shadow-md hover:shadow-xl transition-shadow">
-                <CardHeader>
-                    <div className="bg-primary/10 p-3 rounded-full w-fit mb-4">
-                        <Calendar className="h-8 w-8 text-primary" />
-                    </div>
-                  <CardTitle>Book Appointment</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription>
-                    Schedule appointments with your doctor at your convenience. Manage your upcoming and past appointments seamlessly.
-                  </CardDescription>
-                </CardContent>
-              </Card>
+               <Link href="/find-a-doctor" className="h-full">
+                <Card className="shadow-md hover:shadow-xl transition-shadow h-full">
+                  <CardHeader>
+                      <div className="bg-primary/10 p-3 rounded-full w-fit mb-4">
+                          <Calendar className="h-8 w-8 text-primary" />
+                      </div>
+                    <CardTitle>Book Appointment</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription>
+                      Schedule appointments with your doctor at your convenience. Manage your upcoming and past appointments seamlessly.
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </Link>
                <Card className="shadow-md hover:shadow-xl transition-shadow">
                 <CardHeader>
                     <div className="bg-primary/10 p-3 rounded-full w-fit mb-4">
