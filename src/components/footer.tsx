@@ -22,6 +22,9 @@ export default function Footer() {
           <Link href="/patient/chat" className="text-muted-foreground hover:text-primary">
             Chat with Doctor
           </Link>
+          <Link href="/TECHNICAL_DOCUMENTATION.md" className="text-muted-foreground hover:text-primary" download>
+            Technical Docs
+          </Link>
         </div>
         <div className="grid gap-2 text-sm">
           <h3 className="font-semibold">Company</h3>
@@ -42,9 +45,6 @@ export default function Footer() {
           </Link>
           <Link href="#" className="text-muted-foreground hover:text-primary">
             Privacy Policy
-          </Link>
-          <Link href="/TECHNICAL_DOCUMENTATION.md" className="text-muted-foreground hover:text-primary" download>
-            Technical Docs
           </Link>
         </div>
       </div>
