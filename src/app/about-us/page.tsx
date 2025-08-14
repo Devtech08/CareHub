@@ -36,11 +36,11 @@ export default function AboutUsPage() {
         </div>
         <div>
           <Image
-            src="https://placehold.co/600x400.png"
+            src="https://firebasestorage.googleapis.com/v0/b/carehub-v9tub.appspot.com/o/1723146498305.png?alt=media&token=8d234731-01f4-411a-82c8-883a73c4f7be"
             width={600}
             height={400}
-            alt="Compassionate doctor"
-            data-ai-hint="compassionate doctor"
+            alt="Team behind CareHub"
+            data-ai-hint="team portrait"
             className="rounded-lg shadow-lg"
           />
         </div>
