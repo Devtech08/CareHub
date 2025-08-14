@@ -25,10 +25,10 @@ export default function Footer() {
         </div>
         <div className="grid gap-2 text-sm">
           <h3 className="font-semibold">Company</h3>
-          <Link href="#" className="text-muted-foreground hover:text-primary">
+          <Link href="/about-us" className="text-muted-foreground hover:text-primary">
             About Us
           </Link>
-          <Link href="#" className="text-muted-foreground hover:text-primary">
+          <Link href="/services" className="text-muted-foreground hover:text-primary">
             Services
           </Link>
           <Link href="#" className="text-muted-foreground hover:text-primary">
@@ -42,6 +42,9 @@ export default function Footer() {
           </Link>
           <Link href="#" className="text-muted-foreground hover:text-primary">
             Privacy Policy
+          </Link>
+          <Link href="/TECHNICAL_DOCUMENTATION.md" className="text-muted-foreground hover:text-primary" download>
+            Technical Docs
           </Link>
         </div>
       </div>

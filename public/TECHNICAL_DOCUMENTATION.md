@@ -35,6 +35,7 @@ The project follows a standard Next.js App Router structure.
 
 ```
 /
+├── public/               # Static assets (images, fonts, documentation)
 ├── src/
 │   ├── app/                # Main application routes (pages)
 │   ├── components/         # Reusable React components (UI and features)
@@ -43,7 +44,6 @@ The project follows a standard Next.js App Router structure.
 │   │   ├── flows/          # Genkit flows for specific AI tasks
 │   ├── lib/                # Utility functions, type definitions, and mock data
 │   └── hooks/              # Custom React hooks (e.g., useToast)
-├── public/               # Static assets (images, fonts - not used in this project)
 ├── package.json          # Project dependencies and scripts
 └── next.config.ts        # Next.js configuration
 ```
