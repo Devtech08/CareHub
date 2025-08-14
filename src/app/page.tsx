@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-primary/5">
+        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-[linear-gradient(135deg,_hsl(var(--primary))_0%,_hsl(var(--secondary))_100%)] text-white">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
               <div className="flex flex-col justify-center space-y-4">
@@ -16,15 +16,15 @@ export default function Home() {
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none font-headline">
                     Welcome to CareHub
                   </h1>
-                  <p className="max-w-[600px] text-muted-foreground md:text-xl">
+                  <p className="max-w-[600px] text-primary-foreground/80 md:text-xl">
                     Your health, our priority. Seamlessly connect with trusted doctors and manage your healthcare journey with ease.
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button asChild size="lg">
+                  <Button asChild size="lg" variant="secondary">
                     <Link href="/register">Get Started</Link>
                   </Button>
-                  <Button asChild variant="outline" size="lg">
+                  <Button asChild variant="outline" size="lg" className="bg-transparent text-white border-white hover:bg-white hover:text-primary">
                     <Link href="/login">Login Now</Link>
                   </Button>
                 </div>
@@ -55,8 +55,8 @@ export default function Home() {
             <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:grid-cols-3 lg:max-w-none mt-12">
               <Card className="text-center shadow-md hover:shadow-xl transition-shadow">
                 <CardHeader>
-                  <div className="mx-auto bg-accent/20 rounded-full p-3 w-fit">
-                    <CheckCircle2 className="h-8 w-8 text-accent-foreground" />
+                  <div className="mx-auto bg-primary/20 rounded-full p-3 w-fit">
+                    <CheckCircle2 className="h-8 w-8 text-primary" />
                   </div>
                   <CardTitle className="font-headline mt-4">Find Trusted Doctors</CardTitle>
                 </CardHeader>
@@ -66,8 +66,8 @@ export default function Home() {
               </Card>
               <Card className="text-center shadow-md hover:shadow-xl transition-shadow">
                 <CardHeader>
-                  <div className="mx-auto bg-accent/20 rounded-full p-3 w-fit">
-                    <CalendarPlus className="h-8 w-8 text-accent-foreground" />
+                  <div className="mx-auto bg-primary/20 rounded-full p-3 w-fit">
+                    <CalendarPlus className="h-8 w-8 text-primary" />
                   </div>
                   <CardTitle className="font-headline mt-4">Effortless Booking</CardTitle>
                 </CardHeader>
@@ -77,8 +77,8 @@ export default function Home() {
               </Card>
               <Card className="text-center shadow-md hover:shadow-xl transition-shadow">
                 <CardHeader>
-                   <div className="mx-auto bg-accent/20 rounded-full p-3 w-fit">
-                    <MessageSquare className="h-8 w-8 text-accent-foreground" />
+                   <div className="mx-auto bg-primary/20 rounded-full p-3 w-fit">
+                    <MessageSquare className="h-8 w-8 text-primary" />
                   </div>
                   <CardTitle className="font-headline mt-4">Real-Time Chat</CardTitle>
                 </CardHeader>
