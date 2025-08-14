@@ -4,9 +4,9 @@ import { Icons } from './ui/icons';
 
 const navLinks = [
     { href: '/patient/find-doctor', label: 'Book Appointment' },
-    { href: '#', label: 'Services' },
+    { href: '/services', label: 'Services' },
     { href: '/patient/chat', label: 'Chat with Doctor' },
-    { href: '#', label: 'About Us' },
+    { href: '/about-us', label: 'About Us' },
 ]
 
 export default function Header() {
