@@ -6,9 +6,10 @@ import { BookingModal } from './booking-modal';
 
 type DoctorCardProps = {
   doctor: Doctor;
+  isLoggedIn?: boolean;
 };
 
-export function DoctorCard({ doctor }: DoctorCardProps) {
+export function DoctorCard({ doctor, isLoggedIn = false }: DoctorCardProps) {
   return (
     <Card className="flex flex-col overflow-hidden shadow-md transition-transform hover:scale-105 hover:shadow-xl">
       <CardHeader className="flex flex-row items-center gap-4 bg-primary/5 p-4">
@@ -28,7 +29,7 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
         </div>
       </CardContent>
       <CardFooter className="p-4 pt-0">
-        <BookingModal doctor={doctor} />
+        <BookingModal doctor={doctor} isLoggedIn={isLoggedIn} />
       </CardFooter>
     </Card>
   );

@@ -6,7 +6,7 @@ export default function FindDoctorPage() {
     <div className="flex min-h-screen bg-background">
       <Sidebar />
       <main className="flex-1">
-        <FindDoctor />
+        <FindDoctor isLoggedIn={true} />
       </main>
     </div>
   );
