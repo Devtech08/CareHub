@@ -12,19 +12,19 @@ const articles = [
   {
     title: 'The Benefits of a Balanced Diet',
     description: 'Learn how a balanced diet can improve your overall health and well-being.',
-    image: 'https://placehold.co/600x400.png',
+    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1770&auto=format&fit=crop',
     aiHint: 'healthy food',
   },
   {
     title: 'Tips for a Better Night\'s Sleep',
     description: 'Discover simple tips and tricks to help you get a more restful night\'s sleep.',
-    image: 'https://placehold.co/600x400.png',
+    image: 'https://images.unsplash.com/photo-1530536445350-b3b957b44788?q=80&w=1770&auto=format&fit=crop',
     aiHint: 'person sleeping',
   },
   {
     title: 'The Importance of Regular Exercise',
     description: 'Find out why regular physical activity is crucial for maintaining a healthy lifestyle.',
-    image: 'https://placehold.co/600x400.png',
+    image: 'https://images.unsplash.com/photo-1485727749694-2041ce968e26?q=80&w=1770&auto=format&fit=crop',
     aiHint: 'person jogging',
   },
 ];
