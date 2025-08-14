@@ -5,11 +5,14 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '@/lib/firebase';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
+import { mockDoctors } from '@/lib/mock-data';
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email.' }),
@@ -30,18 +33,53 @@ export function LoginForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Mock Firebase login and role check
-    console.log('Login submitted with:', values);
-    toast({
-      title: 'Login Successful',
-      description: 'Redirecting to your dashboard...',
-    });
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      // For this mock-up, we are checking the role on the client.
+      // In a real application, you would verify the user's role from a custom claim
+      // or a database record after they sign in.
+      const isDoctor = mockDoctors.some(d => d.email === values.email);
+      if (values.role === 'Doctor' && !isDoctor) {
+         toast({
+          title: 'Login Failed',
+          description: 'This email is not registered as a doctor.',
+          variant: 'destructive',
+        });
+        return;
+      }
+      if (values.role === 'Patient' && isDoctor) {
+        toast({
+          title: 'Login Failed',
+          description: 'This email is registered as a doctor. Please log in with the Doctor role.',
+          variant: 'destructive',
+        });
+        return;
+      }
 
-    if (values.role === 'Doctor') {
-        router.push('/doctor/dashboard');
-    } else {
-        router.push('/patient/dashboard');
+
+      await signInWithEmailAndPassword(auth, values.email, values.password);
+      
+      toast({
+        title: 'Login Successful',
+        description: 'Redirecting to your dashboard...',
+      });
+
+      if (values.role === 'Doctor') {
+          router.push('/doctor/dashboard');
+      } else {
+          router.push('/patient/dashboard');
+      }
+    } catch (error: any) {
+        console.error('Login error:', error);
+        let errorMessage = 'Invalid email or password. Please try again.';
+        if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
+            errorMessage = 'Invalid email or password. Please check your credentials.';
+        }
+        toast({
+            title: 'Login Failed',
+            description: errorMessage,
+            variant: 'destructive',
+        });
     }
   }
 
@@ -104,8 +142,8 @@ export function LoginForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full">
-          Login
+        <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
+          {form.formState.isSubmitting ? 'Logging in...' : 'Login'}
         </Button>
         <div className="mt-4 text-center text-sm">
           Don't have an account?{' '}

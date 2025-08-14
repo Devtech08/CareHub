@@ -5,7 +5,8 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { auth } from '@/lib/firebase';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
@@ -40,18 +41,34 @@ export function RegisterForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Mock Firebase user creation
-    console.log('Registration submitted with:', values);
-    toast({
-      title: 'Registration Successful',
-      description: 'Your account has been created. Please log in.',
-    });
-    
-    // Redirect to login page after successful registration
-    setTimeout(() => {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
+      await updateProfile(userCredential.user, {
+          displayName: values.name
+      });
+      
+      // In a real app, you would also save the user's role to Firestore here.
+      console.log('User registered:', userCredential.user);
+
+      toast({
+        title: 'Registration Successful',
+        description: 'Your account has been created. Please log in.',
+      });
+
       router.push('/login');
-    }, 1000);
+    } catch (error: any) {
+        console.error('Registration error:', error);
+        let errorMessage = 'An unexpected error occurred. Please try again.';
+        if (error.code === 'auth/email-already-in-use') {
+            errorMessage = 'This email address is already in use.';
+        }
+        toast({
+            title: 'Registration Failed',
+            description: errorMessage,
+            variant: 'destructive',
+        });
+    }
   }
 
   return (
@@ -139,8 +156,8 @@ export function RegisterForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full">
-          Create Account
+        <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
+          {form.formState.isSubmitting ? 'Creating Account...' : 'Create Account'}
         </Button>
         <div className="mt-4 text-center text-sm">
           Already have an account?{' '}

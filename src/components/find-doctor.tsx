@@ -19,11 +19,7 @@ import { Calendar } from './ui/calendar';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
 
-type FindDoctorProps = {
-  isLoggedIn?: boolean;
-}
-
-export function FindDoctor({ isLoggedIn = false }: FindDoctorProps) {
+export function FindDoctor() {
   const [searchTerm, setSearchTerm] = useState('');
   const [specialty, setSpecialty] = useState('all');
   const [selectedDate, setSelectedDate] = useState<Date | undefined>();
@@ -114,7 +110,7 @@ export function FindDoctor({ isLoggedIn = false }: FindDoctorProps) {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {filteredDoctors.length > 0 ? (
           filteredDoctors.map((doctor) => (
-            <DoctorCard key={doctor.uid} doctor={doctor} isLoggedIn={isLoggedIn} />
+            <DoctorCard key={doctor.uid} doctor={doctor} />
           ))
         ) : (
           <div className="text-center col-span-full py-12">

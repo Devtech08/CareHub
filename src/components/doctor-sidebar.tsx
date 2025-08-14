@@ -8,6 +8,8 @@ import { Icons } from './ui/icons';
 import { cn } from '@/lib/utils';
 import { Button } from './ui/button';
 import { useToast } from '@/hooks/use-toast';
+import { signOut } from 'firebase/auth';
+import { auth } from '@/lib/firebase';
 
 const navItems = [
   { href: '/doctor/dashboard', icon: LayoutGrid, label: 'Dashboard' },
@@ -26,12 +28,21 @@ export function DoctorSidebar() {
   const router = useRouter();
   const { toast } = useToast();
 
-  const handleLogout = () => {
-    toast({
-        title: 'Logged Out',
-        description: 'You have been successfully logged out.',
-    });
-    router.push('/login');
+  const handleLogout = async () => {
+    try {
+        await signOut(auth);
+        toast({
+            title: 'Logged Out',
+            description: 'You have been successfully logged out.',
+        });
+        router.push('/login');
+    } catch (error) {
+        toast({
+            title: 'Logout Failed',
+            description: 'There was an error while logging out.',
+            variant: 'destructive',
+        })
+    }
   };
 
   return (
