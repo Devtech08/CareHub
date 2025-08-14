@@ -7,6 +7,7 @@ export const mockDoctors: Doctor[] = [
     email: 'alice@clinic.com',
     role: 'Doctor',
     specialty: 'Cardiology',
+    image: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=1770&auto=format&fit=crop',
     availability: [
       { date: '2024-08-15', slots: ['09:00', '11:00'] },
       { date: '2024-08-16', slots: ['14:00'] },
@@ -18,6 +19,7 @@ export const mockDoctors: Doctor[] = [
     email: 'bob@clinic.com',
     role: 'Doctor',
     specialty: 'Dermatology',
+    image: 'https://images.unsplash.com/photo-1622253692010-333f2da60710?q=80&w=1770&auto=format&fit=crop',
     availability: [
       { date: '2024-08-15', slots: ['10:00', '12:00', '15:00'] },
       { date: '2024-08-17', slots: ['09:30', '11:30'] },
@@ -29,6 +31,7 @@ export const mockDoctors: Doctor[] = [
     email: 'charlie@clinic.com',
     role: 'Doctor',
     specialty: 'Pediatrics',
+    image: 'https://images.unsplash.com/photo-1537368910025-700350796527?q=80&w=1770&auto=format&fit=crop',
     availability: [
       { date: '2024-08-16', slots: ['08:00', '09:00', '10:00'] },
       { date: '2024-08-18', slots: ['13:00', '14:00', '15:00'] },
@@ -40,6 +43,7 @@ export const mockDoctors: Doctor[] = [
     email: 'diana@clinic.com',
     role: 'Doctor',
     specialty: 'Neurology',
+    image: 'https://images.unsplash.com/photo-1582750421873-9a3c9405d454?q=80&w=1770&auto=format&fit=crop',
     availability: [
       { date: '2024-08-19', slots: ['10:30', '12:30'] },
       { date: '2024-08-20', slots: ['14:30', '16:30'] },

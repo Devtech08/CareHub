@@ -14,7 +14,7 @@ export function DoctorCard({ doctor, isLoggedIn = false }: DoctorCardProps) {
     <Card className="flex flex-col overflow-hidden shadow-md transition-transform hover:scale-105 hover:shadow-xl">
       <CardHeader className="flex flex-row items-center gap-4 bg-primary/5 p-4">
         <Avatar className="h-16 w-16 border-2 border-primary">
-          <AvatarImage src={`https://placehold.co/128x128.png`} alt={doctor.name} data-ai-hint="doctor portrait" />
+          <AvatarImage src={doctor.image} alt={doctor.name} data-ai-hint="doctor portrait" />
           <AvatarFallback>{doctor.name.charAt(0)}</AvatarFallback>
         </Avatar>
         <div>
