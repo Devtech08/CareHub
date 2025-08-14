@@ -31,3 +31,14 @@ export type Appointment = {
   datetime: Date;
   status: 'Pending' | 'Confirmed' | 'Completed' | 'Rejected';
 };
+
+export type MedicalRecord = {
+  id: string;
+  patientId: string;
+  date: Date;
+  doctorName: string;
+  type: 'Consultation Note' | 'Lab Result' | 'Prescription' | 'Imaging Report';
+  title: string;
+  summary: string;
+  fileUrl?: string; // Link to a PDF or file
+};
