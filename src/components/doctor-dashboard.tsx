@@ -29,10 +29,15 @@ import {
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
+import { useAuth } from '@/contexts/auth-context';
+import { signOut } from 'firebase/auth';
+import { auth } from '@/lib/firebase';
 
 export default function DoctorDashboard() {
   const router = useRouter();
   const { toast } = useToast();
+  const { user } = useAuth();
+
   // In a real app, this data would be fetched for the logged-in doctor
   const appointments: Appointment[] = mockAppointments.filter(
     (apt) => apt.doctorId === 'doc1' // Mocking for a specific doctor
@@ -50,19 +55,28 @@ export default function DoctorDashboard() {
   const uniquePatients = new Set(appointments.map((apt) => apt.patientId))
     .size;
 
-  const handleLogout = () => {
-    toast({
-      title: 'Logged Out',
-      description: 'You have been successfully logged out.',
-    });
-    router.push('/login');
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      toast({
+        title: 'Logged Out',
+        description: 'You have been successfully logged out.',
+      });
+      router.push('/login');
+    } catch (error) {
+      toast({
+        title: 'Logout Failed',
+        description: 'An error occurred while logging out.',
+        variant: 'destructive',
+      });
+    }
   };
 
   return (
     <div className="p-4 md:p-8 space-y-8">
       <div className="flex justify-between items-start">
         <div>
-          <h1 className="text-4xl font-bold">Welcome back, Dr. Williams!</h1>
+          <h1 className="text-4xl font-bold">Welcome back, {user?.name}!</h1>
           <p className="text-muted-foreground">
             Here's a summary of your activities.
           </p>

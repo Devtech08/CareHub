@@ -14,6 +14,9 @@ import { Search, Stethoscope, Sparkles, ArrowRight, LogOut } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast';
 import { analyzeSymptoms, AnalyzeSymptomsOutput } from '@/ai/flows/symptom-checker-flow';
 import { useRouter } from 'next/navigation';
+import { useAuth } from '@/contexts/auth-context';
+import { signOut } from 'firebase/auth';
+import { auth } from '@/lib/firebase';
 
 function AiSymptomChecker() {
   const [symptoms, setSymptoms] = useState('');
@@ -85,6 +88,8 @@ function AiSymptomChecker() {
 
 export function PatientDashboard() {
   const router = useRouter();
+  const { user } = useAuth();
+
   const appointments: Appointment[] = mockAppointments.filter(
     (apt) => apt.patientId === 'user1' // Mocking for a specific patient
   );
@@ -96,25 +101,31 @@ export function PatientDashboard() {
   const { toast } = useToast();
 
   const handleSearch = () => {
-    toast({
-      title: 'Search Submitted',
-      description: 'The search functionality is not yet implemented.',
-    });
+    router.push('/patient/find-doctor');
   }
 
-  const handleLogout = () => {
-    toast({
-      title: 'Logged Out',
-      description: 'You have been successfully logged out.',
-    });
-    router.push('/login');
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      toast({
+        title: 'Logged Out',
+        description: 'You have been successfully logged out.',
+      });
+      router.push('/login');
+    } catch (error) {
+      toast({
+        title: 'Logout Failed',
+        description: 'An error occurred while logging out.',
+        variant: 'destructive',
+      });
+    }
   };
 
   return (
     <div className="p-8 space-y-8">
       <div className="flex justify-between items-start">
         <div>
-          <h1 className="text-4xl font-bold">Welcome back, Ofori!</h1>
+          <h1 className="text-4xl font-bold">Welcome back, {user?.name?.split(' ')[0]}!</h1>
           <p className="text-muted-foreground">Here's a summary of your activities.</p>
         </div>
         <Button variant="outline" onClick={handleLogout}>
@@ -152,7 +163,7 @@ export function PatientDashboard() {
               You have {upcomingAppointments.length} appointments coming up.
             </p>
           </div>
-           <Button variant="ghost" className="text-primary hover:text-primary/80">
+           <Button variant="ghost" className="text-primary hover:text-primary/80" onClick={() => router.push('/patient/appointments')}>
             View All <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </div>
@@ -170,7 +181,7 @@ export function PatientDashboard() {
               </TableHeader>
               <TableBody>
                 {upcomingAppointments.length > 0 ? (
-                  upcomingAppointments.map((apt) => (
+                  upcomingAppointments.slice(0, 5).map((apt) => (
                     <TableRow key={apt.id} className="border-border/50">
                       <TableCell className="font-medium">{apt.doctorName}</TableCell>
                       <TableCell>{format(new Date(apt.datetime), 'PP')}</TableCell>
