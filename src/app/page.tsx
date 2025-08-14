@@ -58,11 +58,11 @@ export default function Home() {
               </div>
               <div className="relative">
                 <Image
-                  src="https://images.unsplash.com/photo-1623323438395-6aaaa415d862?q=80&w=1770&auto=format&fit=crop"
+                  src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1770&auto=format&fit=crop"
                   width="600"
                   height="600"
                   alt="Hero Doctor"
-                  data-ai-hint="african doctor"
+                  data-ai-hint="doctor pointing"
                   className="mx-auto aspect-square overflow-hidden rounded-full object-cover"
                 />
                 <Card className="absolute top-1/4 -left-16 shadow-lg p-4 w-56">
