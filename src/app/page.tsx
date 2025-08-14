@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-[calc(100vh-4rem)]">
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gray-50/50">
+        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-background">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:gap-24">
               <div className="flex flex-col justify-center space-y-4">
