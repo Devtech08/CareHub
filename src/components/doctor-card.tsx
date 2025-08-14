@@ -1,24 +1,14 @@
 import type { Doctor } from '@/lib/types';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
-import { Button } from './ui/button';
 import { Card, CardContent, CardFooter, CardHeader } from './ui/card';
 import { Stethoscope } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { BookingModal } from './booking-modal';
 
 type DoctorCardProps = {
   doctor: Doctor;
 };
 
 export function DoctorCard({ doctor }: DoctorCardProps) {
-    const { toast } = useToast();
-
-    const handleBooking = () => {
-        toast({
-            title: 'Booking Feature',
-            description: 'This would open a modal or navigate to a booking page.',
-        });
-    }
-
   return (
     <Card className="flex flex-col overflow-hidden shadow-md transition-transform hover:scale-105 hover:shadow-xl">
       <CardHeader className="flex flex-row items-center gap-4 bg-primary/5 p-4">
@@ -38,7 +28,7 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
         </div>
       </CardContent>
       <CardFooter className="p-4 pt-0">
-        <Button className="w-full" onClick={handleBooking}>Book Appointment</Button>
+        <BookingModal doctor={doctor} />
       </CardFooter>
     </Card>
   );
