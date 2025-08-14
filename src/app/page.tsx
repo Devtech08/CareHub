@@ -58,7 +58,7 @@ export default function Home() {
               </div>
               <div className="relative">
                 <Image
-                  src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1770&auto=format&fit=crop"
+                  src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=1770&auto=format&fit=crop"
                   width="600"
                   height="600"
                   alt="Hero Doctor"
