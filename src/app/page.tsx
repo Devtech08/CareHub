@@ -24,7 +24,7 @@ const articles = [
   {
     title: 'The Importance of Regular Exercise',
     description: 'Find out why regular physical activity is crucial for maintaining a healthy lifestyle.',
-    image: 'https://images.unsplash.com/photo-1485727749694-2041ce968e26?q=80&w=1770&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1538805060514-97d9cc17730c?q=80&w=1770&auto=format&fit=crop',
     aiHint: 'person jogging',
   },
 ];
