@@ -2,7 +2,32 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, Users, Stethoscope, Calendar, MessageSquare, Sparkles, Pill, Ambulance, ClipboardList } from 'lucide-react';
+import { Check, Users, Stethoscope, MessageSquare, Sparkles, Pill, Ambulance, ClipboardList, ArrowRight } from 'lucide-react';
+import { DoctorCard } from '@/components/doctor-card';
+import { mockDoctors } from '@/lib/mock-data';
+
+
+const articles = [
+  {
+    title: 'The Benefits of a Balanced Diet',
+    description: 'Learn how a balanced diet can improve your overall health and well-being.',
+    image: 'https://placehold.co/600x400.png',
+    aiHint: 'healthy food',
+  },
+  {
+    title: 'Tips for a Better Night\'s Sleep',
+    description: 'Discover simple tips and tricks to help you get a more restful night\'s sleep.',
+    image: 'https://placehold.co/600x400.png',
+    aiHint: 'person sleeping',
+  },
+  {
+    title: 'The Importance of Regular Exercise',
+    description: 'Find out why regular physical activity is crucial for maintaining a healthy lifestyle.',
+    image: 'https://placehold.co/600x400.png',
+    aiHint: 'person jogging',
+  },
+];
+
 
 export default function Home() {
   return (
@@ -173,6 +198,71 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Meet Our Top Doctors</h2>
+                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  Our team of experienced and dedicated doctors are here to provide you with the best medical care.
+                </p>
+              </div>
+            </div>
+             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {mockDoctors.slice(0, 4).map((doctor) => (
+                <DoctorCard key={doctor.uid} doctor={doctor} />
+              ))}
+            </div>
+            <div className="text-center mt-12">
+                <Button asChild size="lg">
+                    <Link href="/find-a-doctor">View All Doctors</Link>
+                </Button>
+            </div>
+          </div>
+        </section>
+
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
+            <div className="container px-4 md:px-6">
+                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                    <div className="space-y-2">
+                        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Latest Health Articles</h2>
+                        <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                            Stay informed with our latest health articles and tips.
+                        </p>
+                    </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {articles.map((article) => (
+                        <Card key={article.title} className="overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                            <Image 
+                                src={article.image}
+                                width={600}
+                                height={400}
+                                alt={article.title}
+                                data-ai-hint={article.aiHint}
+                                className="w-full h-48 object-cover"
+                            />
+                            <CardHeader>
+                                <CardTitle>{article.title}</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <CardDescription>{article.description}</CardDescription>
+                            </CardContent>
+                            <CardContent>
+                                <Button variant="link" className="p-0">Read More <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                            </CardContent>
+                        </Card>
+                    ))}
+                </div>
+                 <div className="text-center mt-12">
+                    <Button asChild size="lg">
+                        <Link href="/articles">View All Articles</Link>
+                    </Button>
+                </div>
+            </div>
+        </section>
+
       </main>
     </div>
   );
