@@ -1,11 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { Calendar, MessageSquare, Settings, LifeBuoy, LayoutGrid, Users } from 'lucide-react';
+import { Calendar, MessageSquare, Settings, LifeBuoy, LayoutGrid, Users, LogOut } from 'lucide-react';
 import { Icons } from './ui/icons';
 import { cn } from '@/lib/utils';
+import { Button } from './ui/button';
+import { useToast } from '@/hooks/use-toast';
 
 const navItems = [
   { href: '/doctor/dashboard', icon: LayoutGrid, label: 'Dashboard' },
@@ -21,6 +23,16 @@ const bottomNavItems = [
 
 export function DoctorSidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const { toast } = useToast();
+
+  const handleLogout = () => {
+    toast({
+        title: 'Logged Out',
+        description: 'You have been successfully logged out.',
+    });
+    router.push('/login');
+  };
 
   return (
     <TooltipProvider delayDuration={0}>
@@ -73,6 +85,22 @@ export function DoctorSidebar() {
               </TooltipContent>
             </Tooltip>
           ))}
+            <Tooltip>
+              <TooltipTrigger asChild>
+                 <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={handleLogout}
+                    className="flex h-12 w-12 items-center justify-center rounded-lg text-muted-foreground hover:bg-muted/50"
+                  >
+                  <LogOut className="h-6 w-6" />
+                  <span className="sr-only">Logout</span>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="right" className="bg-secondary border-border/60">
+                <p>Logout</p>
+              </TooltipContent>
+            </Tooltip>
         </div>
       </aside>
     </TooltipProvider>
