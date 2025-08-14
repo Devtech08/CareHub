@@ -108,10 +108,9 @@ export default function DoctorDashboard() {
       <div>
         <div className="flex justify-between items-center mb-4">
           <div>
-            <h2 className="text-2xl font-bold">Today's Appointments</h2>
+            <h2 className="text-2xl font-bold">Upcoming Appointments</h2>
             <p className="text-muted-foreground">
-              You have {upcomingAppointments.length} appointments scheduled for
-              today.
+              You have {upcomingAppointments.length} appointments coming up.
             </p>
           </div>
           <Button
@@ -130,6 +129,7 @@ export default function DoctorDashboard() {
                   <TableHead className="text-muted-foreground">
                     Patient Name
                   </TableHead>
+                  <TableHead className="text-muted-foreground">Date</TableHead>
                   <TableHead className="text-muted-foreground">Time</TableHead>
                   <TableHead className="text-muted-foreground">
                     Status
@@ -146,6 +146,7 @@ export default function DoctorDashboard() {
                       <TableCell className="font-medium">
                         {apt.patientName}
                       </TableCell>
+                       <TableCell>{format(new Date(apt.datetime), 'PP')}</TableCell>
                       <TableCell>
                         {format(new Date(apt.datetime), 'p')}
                       </TableCell>
@@ -171,10 +172,10 @@ export default function DoctorDashboard() {
                 ) : (
                   <TableRow>
                     <TableCell
-                      colSpan={4}
+                      colSpan={5}
                       className="text-center text-muted-foreground h-24"
                     >
-                      No upcoming appointments for today.
+                      No upcoming appointments.
                     </TableCell>
                   </TableRow>
                 )}
