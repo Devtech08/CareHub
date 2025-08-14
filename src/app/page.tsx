@@ -80,19 +80,21 @@ export default function Home() {
               </div>
             </div>
             <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:grid-cols-3 lg:max-w-none mt-12">
-              <Card className="shadow-md hover:shadow-xl transition-shadow">
-                <CardHeader>
-                  <div className="bg-primary/10 p-3 rounded-full w-fit mb-4">
-                     <Stethoscope className="h-8 w-8 text-primary" />
-                  </div>
-                  <CardTitle>Find a Doctor</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription>
-                    Search and find the best doctors from various specialties. Easily book an appointment with a specialist that fits your needs.
-                  </CardDescription>
-                </CardContent>
-              </Card>
+              <Link href="/patient/find-doctor" className="h-full">
+                <Card className="shadow-md hover:shadow-xl transition-shadow h-full">
+                  <CardHeader>
+                    <div className="bg-primary/10 p-3 rounded-full w-fit mb-4">
+                       <Stethoscope className="h-8 w-8 text-primary" />
+                    </div>
+                    <CardTitle>Find a Doctor</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription>
+                      Search and find the best doctors from various specialties. Easily book an appointment with a specialist that fits your needs.
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </Link>
                <Card className="shadow-md hover:shadow-xl transition-shadow">
                 <CardHeader>
                     <div className="bg-primary/10 p-3 rounded-full w-fit mb-4">
