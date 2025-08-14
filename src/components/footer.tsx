@@ -16,7 +16,7 @@ export default function Footer() {
         </div>
         <div className="grid gap-2 text-sm">
           <h3 className="font-semibold">Quick Links</h3>
-          <Link href="/patient/find-doctor" className="text-muted-foreground hover:text-primary">
+          <Link href="/find-a-doctor" className="text-muted-foreground hover:text-primary">
             Book Appointment
           </Link>
           <Link href="/patient/chat" className="text-muted-foreground hover:text-primary">

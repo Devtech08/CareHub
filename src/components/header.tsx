@@ -3,9 +3,8 @@ import { Button } from './ui/button';
 import { Icons } from './ui/icons';
 
 const navLinks = [
-    { href: '/patient/find-doctor', label: 'Book Appointment' },
+    { href: '/find-a-doctor', label: 'Book Appointment' },
     { href: '/services', label: 'Services' },
-    { href: '/patient/chat', label: 'Chat with Doctor' },
     { href: '/about-us', label: 'About Us' },
 ]
 

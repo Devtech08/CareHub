@@ -26,7 +26,7 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <Button asChild size="lg">
-                    <Link href="/patient/find-doctor">Get Services</Link>
+                    <Link href="/find-a-doctor">Get Services</Link>
                   </Button>
                 </div>
               </div>
@@ -80,7 +80,7 @@ export default function Home() {
               </div>
             </div>
             <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:grid-cols-3 lg:max-w-none mt-12">
-              <Link href="/patient/find-doctor" className="h-full">
+              <Link href="/find-a-doctor" className="h-full">
                 <Card className="shadow-md hover:shadow-xl transition-shadow h-full">
                   <CardHeader>
                     <div className="bg-primary/10 p-3 rounded-full w-fit mb-4">
