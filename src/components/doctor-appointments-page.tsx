@@ -18,7 +18,7 @@ export function DoctorAppointmentsPage() {
     (apt) => apt.status === 'Confirmed' && new Date(apt.datetime) >= new Date()
   );
   const pastAppointments = appointments.filter(
-    (apt) => apt.status === 'Completed' || new Date(apt.datetime) < new Date()
+    (apt) => apt.status === 'Completed' || (new Date(apt.datetime) < new Date() && apt.status !== 'Pending')
   );
 
   return (
@@ -48,7 +48,7 @@ export function DoctorAppointmentsPage() {
          <TabsContent value="requests" className="mt-6">
            <h2 className="text-2xl font-bold font-headline mb-4">Appointment Requests</h2>
             {pendingAppointments.length > 0 ? (
-              <div className="space-y-4">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {pendingAppointments.map((apt) => (
                   <AppointmentCard key={apt.id} appointment={apt} userRole="Doctor" />
                 ))}
@@ -60,7 +60,7 @@ export function DoctorAppointmentsPage() {
         <TabsContent value="upcoming" className="mt-6">
            <h2 className="text-2xl font-bold font-headline mb-4">Upcoming Appointments</h2>
             {upcomingAppointments.length > 0 ? (
-              <div className="space-y-4">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {upcomingAppointments.map((apt) => (
                   <AppointmentCard key={apt.id} appointment={apt} userRole="Doctor" />
                 ))}
@@ -72,7 +72,7 @@ export function DoctorAppointmentsPage() {
          <TabsContent value="history" className="mt-6">
            <h2 className="text-2xl font-bold font-headline mb-4">Past Appointments</h2>
             {pastAppointments.length > 0 ? (
-              <div className="space-y-4">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {pastAppointments.map((apt) => (
                   <AppointmentCard key={apt.id} appointment={apt} userRole="Doctor" />
                 ))}
