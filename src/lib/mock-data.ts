@@ -184,3 +184,42 @@ export const mockMessages: ChatMessage[] = [
     timestamp: new Date(),
   },
 ];
+
+export const articles = [
+  {
+    title: 'The Benefits of a Balanced Diet',
+    description: 'Learn how a balanced diet can improve your overall health and well-being.',
+    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1770&auto=format&fit=crop',
+    aiHint: 'healthy food',
+  },
+  {
+    title: 'Tips for a Better Night\'s Sleep',
+    description: 'Discover simple tips and tricks to help you get a more restful night\'s sleep.',
+    image: 'https://images.unsplash.com/photo-1444212477490-ca407925329e?q=80&w=1770&auto=format&fit=crop',
+    aiHint: 'person sleeping',
+  },
+  {
+    title: 'The Importance of Regular Exercise',
+    description: 'Find out why regular physical activity is crucial for maintaining a healthy lifestyle.',
+    image: 'https://images.unsplash.com/photo-1538805060514-97d9cc17730c?q=80&w=1770&auto=format&fit=crop',
+    aiHint: 'person jogging',
+  },
+  {
+    title: "Understanding and Managing Stress",
+    description: "Explore effective techniques for managing stress in your daily life.",
+    image: "https://images.unsplash.com/photo-1598704259954-47202b885543?q=80&w=1770&auto=format&fit=crop",
+    aiHint: "person meditating"
+  },
+  {
+    title: "Hydration: Why It's Key to Your Health",
+    description: "Learn about the importance of staying hydrated and how much water you really need.",
+    image: "https://images.unsplash.com/photo-1563203369-694a7c7293ce?q=80&w=1770&auto=format&fit=crop",
+    aiHint: "glass of water"
+  },
+  {
+    title: "The Role of Gut Health in Overall Wellness",
+    description: "An introduction to the gut microbiome and its impact on your health.",
+    image: "https://images.unsplash.com/photo-1599941913901-38335293d7c4?q=80&w=1770&auto=format&fit=crop",
+    aiHint: "probiotic food"
+  }
+];

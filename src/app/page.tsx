@@ -5,29 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check, Users, Stethoscope, MessageSquare, Sparkles, Pill, Ambulance, ClipboardList, ArrowRight } from 'lucide-react';
 import { DoctorCard } from '@/components/doctor-card';
-import { mockDoctors } from '@/lib/mock-data';
-
-
-const articles = [
-  {
-    title: 'The Benefits of a Balanced Diet',
-    description: 'Learn how a balanced diet can improve your overall health and well-being.',
-    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1770&auto=format&fit=crop',
-    aiHint: 'healthy food',
-  },
-  {
-    title: 'Tips for a Better Night\'s Sleep',
-    description: 'Discover simple tips and tricks to help you get a more restful night\'s sleep.',
-    image: 'https://images.unsplash.com/photo-1444212477490-ca407925329e?q=80&w=1770&auto=format&fit=crop',
-    aiHint: 'person sleeping',
-  },
-  {
-    title: 'The Importance of Regular Exercise',
-    description: 'Find out why regular physical activity is crucial for maintaining a healthy lifestyle.',
-    image: 'https://images.unsplash.com/photo-1538805060514-97d9cc17730c?q=80&w=1770&auto=format&fit=crop',
-    aiHint: 'person jogging',
-  },
-];
+import { mockDoctors, articles } from '@/lib/mock-data';
 
 
 export default function Home() {
@@ -234,7 +212,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {articles.map((article) => (
+                    {articles.slice(0,3).map((article) => (
                         <Card key={article.title} className="overflow-hidden shadow-md hover:shadow-xl transition-shadow">
                             <Image 
                                 src={article.image}
