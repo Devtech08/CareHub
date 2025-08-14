@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, Users, Stethoscope, Calendar, MessageSquare, Sparkles, Pill } from 'lucide-react';
+import { Check, Users, Stethoscope, Calendar, MessageSquare, Sparkles, Pill, Ambulance } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -121,7 +121,7 @@ export default function Home() {
                   </CardDescription>
                 </CardContent>
               </Card>
-               <Card className="shadow-md hover:shadow-xl transition-shadow lg:col-start-2">
+               <Card className="shadow-md hover:shadow-xl transition-shadow">
                 <CardHeader>
                     <div className="bg-primary/10 p-3 rounded-full w-fit mb-4">
                      <Sparkles className="h-8 w-8 text-primary" />
@@ -131,6 +131,19 @@ export default function Home() {
                 <CardContent>
                   <CardDescription>
                     Use our intelligent symptom checker to get an idea of which specialist you should consult for your health concerns.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+              <Card className="shadow-md hover:shadow-xl transition-shadow">
+                <CardHeader>
+                    <div className="bg-primary/10 p-3 rounded-full w-fit mb-4">
+                        <Ambulance className="h-8 w-8 text-primary" />
+                    </div>
+                  <CardTitle>Emergency Care</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription>
+                    Get immediate medical attention for urgent health issues. Our emergency care is available 24/7.
                   </CardDescription>
                 </CardContent>
               </Card>
