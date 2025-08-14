@@ -1,4 +1,4 @@
-import type { Doctor, Appointment, MedicalRecord } from './types';
+import type { Doctor, Appointment, MedicalRecord, ChatMessage } from './types';
 
 export const mockDoctors: Doctor[] = [
   {
@@ -120,5 +120,43 @@ export const mockMedicalRecords: MedicalRecord[] = [
     title: 'Prescription for Vitamin D Supplement',
     summary: 'Prescribed Vitamin D3 2000 IU to be taken daily with a meal.',
     fileUrl: '/mock-records/rec3.pdf',
+  },
+];
+
+export const mockMessages: ChatMessage[] = [
+  {
+    id: 'msg1',
+    senderId: 'user1',
+    receiverId: 'doc1',
+    text: 'Good morning, Dr. Williams. I had a quick question about the new medication.',
+    timestamp: new Date('2024-08-14T09:30:00'),
+  },
+  {
+    id: 'msg2',
+    senderId: 'doc1',
+    receiverId: 'user1',
+    text: 'Good morning! Of course, what is your question?',
+    timestamp: new Date('2024-08-14T09:31:00'),
+  },
+  {
+    id: 'msg3',
+    senderId: 'user1',
+    receiverId: 'doc1',
+    text: 'Should I take it with food or on an empty stomach?',
+    timestamp: new Date('2024-08-14T09:32:00'),
+  },
+  {
+    id: 'msg4',
+    senderId: 'doc1',
+    receiverId: 'user1',
+    text: 'It is best to take it with food. Let me know if you have any other questions!',
+    timestamp: new Date('2024-08-14T09:35:00'),
+  },
+    {
+    id: 'msg5',
+    senderId: 'user1',
+    receiverId: 'doc2',
+    text: 'Hello Dr. Brown, I have a follow up question from our last appointment.',
+    timestamp: new Date(),
   },
 ];

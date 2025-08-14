@@ -42,3 +42,11 @@ export type MedicalRecord = {
   summary: string;
   fileUrl?: string; // Link to a PDF or file
 };
+
+export type ChatMessage = {
+  id: string;
+  senderId: string; // 'user1' or 'doc1' etc.
+  receiverId: string;
+  text: string;
+  timestamp: Date;
+};
