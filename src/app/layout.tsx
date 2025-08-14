@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
+import Header from '@/components/header';
+import Footer from '@/components/footer';
 
 export const metadata: Metadata = {
   title: 'CareHub',
@@ -13,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" style={{ colorScheme: 'dark' }} suppressHydrationWarning>
+    <html lang="en" style={{ colorScheme: 'light' }} suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -23,7 +25,9 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased">
-        {children}
+        <Header />
+        <main>{children}</main>
+        <Footer />
         <Toaster />
       </body>
     </html>
