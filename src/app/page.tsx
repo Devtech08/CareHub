@@ -95,6 +95,7 @@ export default function Home() {
                   </CardContent>
                 </Card>
               </Link>
+              <Link href="/online-pharmacy" className="h-full">
                <Card className="shadow-md hover:shadow-xl transition-shadow h-full">
                 <CardHeader>
                     <div className="bg-primary/10 p-3 rounded-full w-fit mb-4">
@@ -108,6 +109,8 @@ export default function Home() {
                   </CardDescription>
                 </CardContent>
               </Card>
+              </Link>
+              <Link href="/patient/chat" className="h-full">
                <Card className="shadow-md hover:shadow-xl transition-shadow">
                 <CardHeader>
                     <div className="bg-primary/10 p-3 rounded-full w-fit mb-4">
@@ -121,6 +124,8 @@ export default function Home() {
                   </CardDescription>
                 </CardContent>
               </Card>
+              </Link>
+              <Link href="/ai-symptom-checker" className="h-full">
                <Card className="shadow-md hover:shadow-xl transition-shadow">
                 <CardHeader>
                     <div className="bg-primary/10 p-3 rounded-full w-fit mb-4">
@@ -134,6 +139,8 @@ export default function Home() {
                   </CardDescription>
                 </CardContent>
               </Card>
+              </Link>
+              <Link href="/emergency-care" className="h-full">
               <Card className="shadow-md hover:shadow-xl transition-shadow">
                 <CardHeader>
                     <div className="bg-primary/10 p-3 rounded-full w-fit mb-4">
@@ -147,6 +154,8 @@ export default function Home() {
                   </CardDescription>
                 </CardContent>
               </Card>
+              </Link>
+              <Link href="/patient/records" className="h-full">
               <Card className="shadow-md hover:shadow-xl transition-shadow">
                 <CardHeader>
                     <div className="bg-primary/10 p-3 rounded-full w-fit mb-4">
@@ -160,6 +169,7 @@ export default function Home() {
                   </CardDescription>
                 </CardContent>
               </Card>
+              </Link>
             </div>
           </div>
         </section>
