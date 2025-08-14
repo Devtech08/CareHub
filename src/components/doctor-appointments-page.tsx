@@ -29,7 +29,7 @@ export function DoctorAppointmentsPage() {
       </div>
 
       <Tabs defaultValue="requests" className="w-full">
-        <TabsList className="grid w-full grid-cols-1 md:grid-cols-3 md:w-[600px]">
+        <TabsList className="grid w-full max-w-[600px] grid-cols-1 md:grid-cols-3">
            <TabsTrigger value="requests">
             <CalendarClock className="mr-2 h-4 w-4" />
             Requests
