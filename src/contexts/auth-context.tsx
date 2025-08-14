@@ -2,7 +2,7 @@
 'use client';
 
 import { createContext, useState, useEffect, useContext, ReactNode } from 'react';
-import { onAuthStateChanged, User } from 'firebase/auth';
+import { onAuthStateChanged, User as FirebaseUser } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { mockDoctors } from '@/lib/mock-data';
 import type { User as AppUser, Doctor } from '@/lib/types';
@@ -20,15 +20,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser: User | null) => {
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser: FirebaseUser | null) => {
       if (firebaseUser) {
-        // In a real app, you'd fetch user role and other profile info from Firestore
-        // For this mock, we'll check if the email belongs to a predefined doctor
         const matchingDoctor = mockDoctors.find(d => d.email === firebaseUser.email);
+        
         if (matchingDoctor) {
-          setUser(matchingDoctor as Doctor);
+          setUser({ ...matchingDoctor, uid: firebaseUser.uid, name: firebaseUser.displayName || matchingDoctor.name });
         } else {
-            // Default to a patient role
             setUser({
                 uid: firebaseUser.uid,
                 email: firebaseUser.email!,
