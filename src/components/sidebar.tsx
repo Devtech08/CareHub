@@ -1,0 +1,81 @@
+'use client';
+
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Home, Stethoscope, Calendar, FileText, MessageSquare, Settings, LifeBuoy, LayoutGrid } from 'lucide-react';
+import { Icons } from './ui/icons';
+import { cn } from '@/lib/utils';
+
+const navItems = [
+  { href: '/patient/dashboard', icon: LayoutGrid, label: 'Dashboard' },
+  { href: '/patient/find-doctor', icon: Stethoscope, label: 'Find a Doctor' },
+  { href: '/patient/appointments', icon: Calendar, label: 'Appointments' },
+  { href: '/patient/records', icon: FileText, label: 'Medical Records' },
+  { href: '/patient/chat', icon: MessageSquare, label: 'Messages' },
+];
+
+const bottomNavItems = [
+    { href: '/patient/settings', icon: Settings, label: 'Settings' },
+    { href: '/patient/help', icon: LifeBuoy, label: 'Help & Support' },
+]
+
+export function Sidebar() {
+  const pathname = usePathname();
+
+  return (
+    <TooltipProvider delayDuration={0}>
+      <aside className="h-screen sticky top-0 left-0 flex flex-col items-center w-20 bg-secondary/30 border-r border-border/50 py-4">
+        <Link href="/patient/dashboard" className="mb-8">
+           <Icons.logo className="h-8 w-8 text-primary" />
+        </Link>
+        <nav className="flex flex-col items-center gap-4 flex-grow">
+          {navItems.map((item) => (
+            <Tooltip key={item.href}>
+              <TooltipTrigger asChild>
+                <Link
+                  href={item.href}
+                  className={cn(
+                    'flex h-12 w-12 items-center justify-center rounded-lg transition-colors',
+                     pathname.startsWith(item.href)
+                      ? 'bg-primary text-primary-foreground'
+                      : 'text-muted-foreground hover:bg-muted/50'
+                  )}
+                >
+                  <item.icon className="h-6 w-6" />
+                  <span className="sr-only">{item.label}</span>
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent side="right" className="bg-secondary border-border/60">
+                <p>{item.label}</p>
+              </TooltipContent>
+            </Tooltip>
+          ))}
+        </nav>
+         <div className="flex flex-col items-center gap-4">
+            {bottomNavItems.map((item) => (
+            <Tooltip key={item.href}>
+              <TooltipTrigger asChild>
+                <Link
+                  href={item.href}
+                  className={cn(
+                    'flex h-12 w-12 items-center justify-center rounded-lg transition-colors',
+                     pathname.startsWith(item.href)
+                      ? 'bg-primary text-primary-foreground'
+                      : 'text-muted-foreground hover:bg-muted/50'
+                  )}
+                >
+                  <item.icon className="h-6 w-6" />
+                  <span className="sr-only">{item.label}</span>
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent side="right" className="bg-secondary border-border/60">
+                <p>{item.label}</p>
+              </TooltipContent>
+            </Tooltip>
+          ))}
+        </div>
+      </aside>
+    </TooltipProvider>
+  );
+}
