@@ -95,7 +95,7 @@ export default function Home() {
                   </CardContent>
                 </Card>
               </Link>
-               <Link href="/find-a-doctor" className="h-full">
+               <Link href="/book-appointment" className="h-full">
                 <Card className="shadow-md hover:shadow-xl transition-shadow h-full">
                   <CardHeader>
                       <div className="bg-primary/10 p-3 rounded-full w-fit mb-4">
