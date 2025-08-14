@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, Users, Stethoscope, Calendar, MessageSquare, Sparkles } from 'lucide-react';
+import { Check, Users, Stethoscope, Calendar, MessageSquare, Sparkles, Pill } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -95,21 +95,19 @@ export default function Home() {
                   </CardContent>
                 </Card>
               </Link>
-               <Link href="/book-appointment" className="h-full">
-                <Card className="shadow-md hover:shadow-xl transition-shadow h-full">
-                  <CardHeader>
-                      <div className="bg-primary/10 p-3 rounded-full w-fit mb-4">
-                          <Calendar className="h-8 w-8 text-primary" />
-                      </div>
-                    <CardTitle>Book Appointment</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription>
-                      Schedule appointments with your doctor at your convenience. Manage your upcoming and past appointments seamlessly.
-                    </CardDescription>
-                  </CardContent>
-                </Card>
-              </Link>
+               <Card className="shadow-md hover:shadow-xl transition-shadow h-full">
+                <CardHeader>
+                    <div className="bg-primary/10 p-3 rounded-full w-fit mb-4">
+                        <Pill className="h-8 w-8 text-primary" />
+                    </div>
+                  <CardTitle>Online Pharmacy</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription>
+                    Get your prescriptions filled and delivered to your doorstep from our licensed online pharmacy.
+                  </CardDescription>
+                </CardContent>
+              </Card>
                <Card className="shadow-md hover:shadow-xl transition-shadow">
                 <CardHeader>
                     <div className="bg-primary/10 p-3 rounded-full w-fit mb-4">
