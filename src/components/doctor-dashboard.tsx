@@ -76,7 +76,7 @@ export default function DoctorDashboard() {
     <div className="p-4 md:p-8 space-y-8">
       <div className="flex justify-between items-start">
         <div>
-          <h1 className="text-4xl font-bold">Welcome back, {user?.name}!</h1>
+          <h1 className="text-4xl font-bold">Welcome back, {user?.role === 'Doctor' ? 'Dr. ' : ''}{user?.name}!</h1>
           <p className="text-muted-foreground">
             Here's a summary of your activities.
           </p>
