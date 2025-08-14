@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, Users, Stethoscope, Calendar, MessageSquare, Sparkles, Pill, Ambulance } from 'lucide-react';
+import { Check, Users, Stethoscope, Calendar, MessageSquare, Sparkles, Pill, Ambulance, ClipboardList } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -144,6 +144,19 @@ export default function Home() {
                 <CardContent>
                   <CardDescription>
                     Get immediate medical attention for urgent health issues. Our emergency care is available 24/7.
+                  </CardDescription>
+                </CardContent>
+              </Card>
+              <Card className="shadow-md hover:shadow-xl transition-shadow">
+                <CardHeader>
+                    <div className="bg-primary/10 p-3 rounded-full w-fit mb-4">
+                        <ClipboardList className="h-8 w-8 text-primary" />
+                    </div>
+                  <CardTitle>Tracking</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription>
+                    Track your health progress and medical history with our comprehensive tracking tools.
                   </CardDescription>
                 </CardContent>
               </Card>
