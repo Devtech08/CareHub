@@ -9,10 +9,12 @@ import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
+import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email.' }),
   password: z.string().min(6, { message: 'Password must be at least 6 characters.' }),
+  role: z.enum(['Patient', 'Doctor'], { required_error: 'You need to select a role.' }),
 });
 
 export function LoginForm() {
@@ -24,6 +26,7 @@ export function LoginForm() {
     defaultValues: {
       email: '',
       password: '',
+      role: 'Patient',
     },
   });
 
@@ -35,12 +38,11 @@ export function LoginForm() {
       description: 'Redirecting to your dashboard...',
     });
 
-    // Mock redirection based on role. In a real app, you would fetch the user's role from Firestore.
-    // For this demo, we'll assume a patient is logging in.
-    // A doctor could be directed via `router.push('/doctor/dashboard');`
-    setTimeout(() => {
-      router.push('/patient/dashboard');
-    }, 1000);
+    if (values.role === 'Doctor') {
+        router.push('/doctor/dashboard');
+    } else {
+        router.push('/patient/dashboard');
+    }
   }
 
   return (
@@ -67,6 +69,36 @@ export function LoginForm() {
               <FormLabel>Password</FormLabel>
               <FormControl>
                 <Input type="password" placeholder="••••••••" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="role"
+          render={({ field }) => (
+            <FormItem className="space-y-3">
+              <FormLabel>Login as a...</FormLabel>
+              <FormControl>
+                <RadioGroup
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                  className="flex space-x-4"
+                >
+                  <FormItem className="flex items-center space-x-2 space-y-0">
+                    <FormControl>
+                      <RadioGroupItem value="Patient" />
+                    </FormControl>
+                    <FormLabel className="font-normal">Patient</FormLabel>
+                  </FormItem>
+                  <FormItem className="flex items-center space-x-2 space-y-0">
+                    <FormControl>
+                      <RadioGroupItem value="Doctor" />
+                    </FormControl>
+                    <FormLabel className="font-normal">Doctor</FormLabel>
+                  </FormItem>
+                </RadioGroup>
               </FormControl>
               <FormMessage />
             </FormItem>
