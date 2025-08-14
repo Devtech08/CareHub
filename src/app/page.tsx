@@ -18,7 +18,7 @@ const articles = [
   {
     title: 'Tips for a Better Night\'s Sleep',
     description: 'Discover simple tips and tricks to help you get a more restful night\'s sleep.',
-    image: 'https://images.unsplash.com/photo-1530536445350-b3b957b44788?q=80&w=1770&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1444212477490-ca407925329e?q=80&w=1770&auto=format&fit=crop',
     aiHint: 'person sleeping',
   },
   {
