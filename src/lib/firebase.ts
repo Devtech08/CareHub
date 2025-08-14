@@ -3,12 +3,12 @@ import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  projectId: "carehub-v9tub",
-  appId: "1:1039108942865:web:f8797fa196a6bc626b15b0",
-  storageBucket: "carehub-v9tub.firebasestorage.app",
-  apiKey: "AIzaSyCf9-QhW43_2Lmz1A3HNhK1EyZ-ssLDY-k",
-  authDomain: "carehub-v9tub.firebaseapp.com",
-  messagingSenderId: "1039108942865"
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
 };
 
 
