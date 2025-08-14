@@ -16,7 +16,7 @@ import type { Appointment } from '@/lib/types';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { format } from 'date-fns';
 import { Search, ArrowUpDown } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { useRouter } from 'next/navigation';
 
 type Patient = {
   id: string;
@@ -26,7 +26,7 @@ type Patient = {
 };
 
 export function DoctorPatientsPage() {
-  const { toast } = useToast();
+  const router = useRouter();
   // In a real app, this data would be fetched for the logged-in doctor
   const appointments: Appointment[] = mockAppointments.filter(
     (apt) => apt.doctorId === 'doc1'
@@ -87,11 +87,8 @@ export function DoctorPatientsPage() {
     setSortConfig({ key, direction });
   };
   
-  const handleViewProfile = (patientName: string) => {
-    toast({
-        title: 'Feature Not Implemented',
-        description: `Viewing the profile for ${patientName} is not yet available.`,
-    })
+  const handleViewProfile = (patientId: string) => {
+    router.push(`/doctor/patients/${patientId}`);
   }
 
   return (
@@ -160,7 +157,7 @@ export function DoctorPatientsPage() {
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() => handleViewProfile(patient.name)}
+                      onClick={() => handleViewProfile(patient.id)}
                       className="border-primary/50 text-primary hover:bg-primary/10 hover:text-primary"
                     >
                       View Profile
