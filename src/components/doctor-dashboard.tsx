@@ -25,17 +25,12 @@ import {
   CalendarCheck,
   CalendarClock,
   Users,
-  LogOut,
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useToast } from '@/hooks/use-toast';
 import { useAuth } from '@/contexts/auth-context';
-import { signOut } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
 
 export default function DoctorDashboard() {
   const router = useRouter();
-  const { toast } = useToast();
   const { user } = useAuth();
 
   // In a real app, this data would be fetched for the logged-in doctor
@@ -55,23 +50,6 @@ export default function DoctorDashboard() {
   const uniquePatients = new Set(appointments.map((apt) => apt.patientId))
     .size;
 
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      toast({
-        title: 'Logged Out',
-        description: 'You have been successfully logged out.',
-      });
-      router.push('/login');
-    } catch (error) {
-      toast({
-        title: 'Logout Failed',
-        description: 'An error occurred while logging out.',
-        variant: 'destructive',
-      });
-    }
-  };
-
   return (
     <div className="p-4 md:p-8 space-y-8">
       <div className="flex justify-between items-start">
@@ -81,10 +59,6 @@ export default function DoctorDashboard() {
             Here's a summary of your activities.
           </p>
         </div>
-        <Button variant="outline" onClick={handleLogout}>
-          <LogOut className="mr-2 h-4 w-4" />
-          Logout
-        </Button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

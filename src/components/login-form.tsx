@@ -35,14 +35,9 @@ export function LoginForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      // In this mock-up, we allow login if the role is 'Doctor' and the email is not explicitly a patient.
-      // A real app would have a more robust role management system.
       const isExistingDoctor = mockDoctors.some(d => d.email === values.email);
 
-      if (values.role === 'Doctor' && !isExistingDoctor) {
-        // This is a new user trying to log in as a doctor.
-        // We'll trust the role selection for now, but a real app would verify from a database.
-      } else if (values.role === 'Patient' && isExistingDoctor) {
+      if (values.role === 'Patient' && isExistingDoctor) {
         toast({
           title: 'Login Failed',
           description: 'This email is registered as a doctor. Please log in with the Doctor role.',
@@ -51,8 +46,10 @@ export function LoginForm() {
         return;
       }
 
-
       await signInWithEmailAndPassword(auth, values.email, values.password);
+      
+      // Store the selected role to help the AuthProvider
+      sessionStorage.setItem('userRole', values.role);
       
       toast({
         title: 'Login Successful',

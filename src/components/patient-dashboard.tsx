@@ -10,13 +10,11 @@ import type { Appointment } from '@/lib/types';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Badge } from './ui/badge';
 import { format } from 'date-fns';
-import { Search, Stethoscope, Sparkles, ArrowRight, LogOut } from 'lucide-react';
+import { Search, Stethoscope, Sparkles, ArrowRight } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { analyzeSymptoms, AnalyzeSymptomsOutput } from '@/ai/flows/symptom-checker-flow';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/auth-context';
-import { signOut } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
 
 function AiSymptomChecker() {
   const [symptoms, setSymptoms] = useState('');
@@ -98,28 +96,9 @@ export function PatientDashboard() {
     (apt) => new Date(apt.datetime) > new Date() && (apt.status === 'Confirmed' || apt.status === 'Pending')
   );
   
-  const { toast } = useToast();
-
   const handleSearch = () => {
     router.push('/patient/find-doctor');
   }
-
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      toast({
-        title: 'Logged Out',
-        description: 'You have been successfully logged out.',
-      });
-      router.push('/login');
-    } catch (error) {
-      toast({
-        title: 'Logout Failed',
-        description: 'An error occurred while logging out.',
-        variant: 'destructive',
-      });
-    }
-  };
 
   return (
     <div className="p-8 space-y-8">
@@ -128,10 +107,6 @@ export function PatientDashboard() {
           <h1 className="text-4xl font-bold">Welcome back, {user?.name?.split(' ')[0]}!</h1>
           <p className="text-muted-foreground">Here's a summary of your activities.</p>
         </div>
-        <Button variant="outline" onClick={handleLogout}>
-          <LogOut className="mr-2 h-4 w-4" />
-          Logout
-        </Button>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

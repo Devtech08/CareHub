@@ -22,28 +22,28 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser: FirebaseUser | null) => {
       if (firebaseUser) {
+        // In a real app, the user's role would be fetched from a database (e.g., Firestore)
+        // using the firebaseUser.uid. The role would be stored upon registration.
+        // For this mockup, we'll use a combination of mock data and session storage as a fallback.
         const matchingDoctor = mockDoctors.find(d => d.email === firebaseUser.email);
         
-        // This logic is simplistic due to mock data. 
-        // A real app would fetch role from a database (e.g., Firestore).
-        // For now, if not in mockDoctors, we can't be sure they are a doctor just by email.
-        // The login form's role selection is the primary driver for now.
-        if (matchingDoctor) {
+        // Check if a role was stored during login/register
+        const sessionRole = sessionStorage.getItem('userRole');
+
+        if (matchingDoctor && (sessionRole === 'Doctor' || !sessionRole)) {
           setUser({ ...matchingDoctor, uid: firebaseUser.uid, name: firebaseUser.displayName || matchingDoctor.name });
         } else {
-            // A more robust solution is needed here for a real application.
-            // We'll assume a user is a patient unless they are in the mock doctor list.
-            // When they register as a doctor, we need a better way to persist that role.
+            // Default to 'Patient' role, but respect the role selected during login if available.
             setUser({
                 uid: firebaseUser.uid,
                 email: firebaseUser.email!,
                 name: firebaseUser.displayName || 'User',
-                // This is a temporary fix. The role should be determined more reliably.
-                role: 'Patient', 
+                role: (sessionRole as 'Patient' | 'Doctor') || 'Patient',
             });
         }
       } else {
         setUser(null);
+        sessionStorage.removeItem('userRole');
       }
       setLoading(false);
     });
