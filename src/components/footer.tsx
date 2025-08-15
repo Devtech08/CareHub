@@ -50,7 +50,7 @@ export default function Footer() {
       </div>
       <div className="container flex items-center justify-center py-4 border-t">
         <p className="text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} CareHub. All rights reserved.
+          &copy; {new Date().getFullYear()} CareHub. All rights reserved. Created by Warrior & Nixon.
         </p>
       </div>
     </footer>
