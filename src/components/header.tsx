@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -17,8 +18,15 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import {
+  Sheet,
+  SheetContent,
+  SheetClose,
+  SheetTrigger,
+} from '@/components/ui/sheet';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
-import { LogOut, LayoutGrid, User } from 'lucide-react';
+import { LogOut, LayoutGrid, User, Menu } from 'lucide-react';
+import { useState } from 'react';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -31,6 +39,7 @@ export default function Header() {
   const { user, loading } = useAuth();
   const router = useRouter();
   const { toast } = useToast();
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const handleSignOut = async () => {
     try {
@@ -58,10 +67,14 @@ export default function Header() {
     }
   };
 
+  const handleSheetClose = () => {
+    setIsSheetOpen(false);
+  }
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
-        <div className="mr-4 flex">
+        <div className="mr-4 flex items-center">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <Icons.logo className="h-6 w-6 text-primary" />
             <span className="font-bold">CareHub</span>
@@ -74,6 +87,7 @@ export default function Header() {
             ))}
           </nav>
         </div>
+
         <div className="flex flex-1 items-center justify-end space-x-2">
           {loading ? (
             <div className="flex items-center gap-2">
@@ -114,15 +128,54 @@ export default function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <>
+            <div className="hidden md:flex items-center gap-2">
               <Button asChild variant="ghost">
                 <Link href="/login">Login</Link>
               </Button>
               <Button asChild>
                 <Link href="/register">Register</Link>
               </Button>
-            </>
+            </div>
           )}
+           <div className="md:hidden">
+            <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Open Menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                  <div className="p-4">
+                     <Link href="/" className="mb-8 flex items-center space-x-2" onClick={handleSheetClose}>
+                        <Icons.logo className="h-6 w-6 text-primary" />
+                        <span className="font-bold">CareHub</span>
+                      </Link>
+                      <nav className="flex flex-col gap-4 mt-8">
+                          {navLinks.map((link) => (
+                            <Link key={link.href} href={link.href} onClick={handleSheetClose} className="text-lg font-medium transition-colors hover:text-primary">
+                                {link.label}
+                            </Link>
+                          ))}
+                      </nav>
+                      {!user && (
+                         <div className="mt-8 flex flex-col gap-2">
+                           <SheetClose asChild>
+                            <Button asChild variant="outline">
+                                <Link href="/login">Login</Link>
+                            </Button>
+                            </SheetClose>
+                            <SheetClose asChild>
+                            <Button asChild>
+                                <Link href="/register">Register</Link>
+                            </Button>
+                            </SheetClose>
+                        </div>
+                      )}
+                  </div>
+              </SheetContent>
+            </Sheet>
+           </div>
         </div>
       </div>
     </header>
