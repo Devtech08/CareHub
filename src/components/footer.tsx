@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="w-full border-t bg-background">
       <div className="container grid items-start gap-8 px-4 py-12 text-center md:grid-cols-2 lg:grid-cols-4 md:px-6">
-        <div className="flex flex-col gap-2 items-center">
+        <div className="flex flex-col gap-2 items-center text-center">
           <Link href="/" className="flex items-center gap-2">
             <Icons.logo className="h-8 w-8 text-primary" />
             <span className="font-bold text-lg">CareHub</span>
@@ -15,7 +15,7 @@ export default function Footer() {
             Your health, our priority. Seamlessly connect with trusted doctors.
           </p>
         </div>
-        <div className="grid gap-2 text-sm">
+        <div className="grid gap-2 text-sm text-center">
           <h3 className="font-semibold">Quick Links</h3>
           <Link href="/find-a-doctor" className="text-muted-foreground hover:text-primary">
             Book Appointment
@@ -27,7 +27,7 @@ export default function Footer() {
             Technical Docs
           </Link>
         </div>
-        <div className="grid gap-2 text-sm">
+        <div className="grid gap-2 text-sm text-center">
           <h3 className="font-semibold">Company</h3>
           <Link href="/about-us" className="text-muted-foreground hover:text-primary">
             About Us
@@ -39,7 +39,7 @@ export default function Footer() {
             Contact
           </Link>
         </div>
-        <div className="grid gap-2 text-sm">
+        <div className="grid gap-2 text-sm text-center">
           <h3 className="font-semibold">Legal</h3>
           <Link href="#" className="text-muted-foreground hover:text-primary">
             Terms of Service
