@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export default function EmergencyCarePage() {
   return (
-    <div className="container mx-auto p-4 md:p-8">
+    <div className="p-4 md:p-8">
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold font-headline text-destructive">Emergency Medical Care</h1>
         <p className="text-muted-foreground text-lg mt-2">

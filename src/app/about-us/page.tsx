@@ -5,7 +5,7 @@ import { CheckCircle, Heart, Users } from 'lucide-react';
 
 export default function AboutUsPage() {
   return (
-    <div className="container mx-auto p-4 md:p-8 space-y-12">
+    <div className="p-4 md:p-8 space-y-12">
       <section className="text-center">
         <h1 className="text-4xl md:text-5xl font-bold font-headline">About CareHub</h1>
         <p className="text-muted-foreground text-lg mt-4 max-w-3xl mx-auto">
