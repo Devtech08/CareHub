@@ -78,19 +78,18 @@ export default function Header() {
                 <Icons.logo className="h-6 w-6 text-primary" />
                 <span className="font-bold hidden sm:inline-block">CareHub</span>
             </Link>
+            <nav className="hidden md:flex items-center gap-6">
+                {navLinks.map((link) => (
+                <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                >
+                    {link.label}
+                </Link>
+                ))}
+            </nav>
         </div>
-
-        <nav className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => (
-            <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-                {link.label}
-            </Link>
-            ))}
-        </nav>
 
         <div className="flex items-center gap-4">
           {loading ? (
