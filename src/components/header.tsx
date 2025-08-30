@@ -72,27 +72,26 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
-        <div className="flex items-center">
+      <div className="container flex h-16 items-center justify-between">
+        <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center gap-2">
             <Icons.logo className="h-6 w-6 text-primary" />
             <span className="font-bold hidden sm:inline-block">CareHub</span>
           </Link>
+          <nav className="hidden md:flex items-center gap-6">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
         </div>
 
-        <nav className="hidden md:flex items-center justify-center flex-1 gap-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="flex items-center justify-end gap-2 ml-auto flex-shrink-0">
+        <div className="flex items-center justify-end gap-2 flex-shrink-0">
           {loading ? (
             <Skeleton className="h-10 w-24" />
           ) : user ? (
