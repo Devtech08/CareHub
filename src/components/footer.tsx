@@ -10,7 +10,7 @@ export default function Footer() {
             <Icons.logo className="h-8 w-8 text-primary" />
             <span className="font-bold text-lg">CareHub</span>
           </Link>
-          <p className="text-muted-foreground text-sm max-w-xs">
+          <p className="text-muted-foreground text-sm max-w-xs text-center md:text-left">
             Your health, our priority. Seamlessly connect with trusted doctors.
           </p>
         </div>
