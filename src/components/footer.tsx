@@ -5,7 +5,7 @@ import { Icons } from './ui/icons';
 export default function Footer() {
   return (
     <footer className="w-full border-t bg-background">
-      <div className="container grid items-start gap-8 px-4 py-12 text-center md:grid-cols-2 md:text-left lg:grid-cols-4 md:px-6">
+      <div className="container grid items-start gap-8 px-4 py-12 text-center md:grid-cols-2 lg:grid-cols-4 md:px-6">
         <div className="flex flex-col gap-2 items-center md:items-start">
           <Link href="/" className="flex items-center gap-2">
             <Icons.logo className="h-8 w-8 text-primary" />
