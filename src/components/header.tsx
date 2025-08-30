@@ -73,13 +73,13 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
-        <div className="mr-auto flex items-center gap-6">
+        <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center gap-2">
             <Icons.logo className="h-6 w-6 text-primary" />
             <span className="font-bold hidden sm:inline-block">CareHub</span>
           </Link>
         </div>
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-6 flex-1 justify-center">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -91,7 +91,7 @@ export default function Header() {
             ))}
           </nav>
 
-        <div className="flex items-center justify-end gap-2 flex-1">
+        <div className="flex items-center justify-end gap-2">
           {loading ? (
             <Skeleton className="h-10 w-24" />
           ) : user ? (
