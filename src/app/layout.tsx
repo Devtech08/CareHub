@@ -27,11 +27,9 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased">
         <AuthProvider>
-          <div className="container mx-auto">
             <Header />
             <main>{children}</main>
             <Footer />
-          </div>
           <Toaster />
         </AuthProvider>
       </body>

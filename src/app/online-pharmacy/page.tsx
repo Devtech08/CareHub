@@ -35,7 +35,7 @@ export default function OnlinePharmacyPage() {
   });
 
   return (
-    <div className="p-4 md:p-8">
+    <div className="container mx-auto p-4 md:p-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold font-headline flex items-center gap-3">
           <Pill className="w-8 h-8" />

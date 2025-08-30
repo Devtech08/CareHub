@@ -41,7 +41,7 @@ export default function AiSymptomCheckerPage() {
   };
 
   return (
-    <div className="p-4 md:p-8 flex justify-center items-center min-h-[calc(100vh-8rem)]">
+    <div className="container mx-auto p-4 md:p-8 flex justify-center items-center min-h-[calc(100vh-8rem)]">
         <Card className="w-full max-w-2xl bg-secondary/30 border-border/50 shadow-xl">
         <CardHeader className="text-center">
             <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit mb-4">

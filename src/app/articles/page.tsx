@@ -7,7 +7,7 @@ import { articles } from '@/lib/mock-data';
 
 export default function ArticlesPage() {
   return (
-    <div className="p-4 md:p-8">
+    <div className="container mx-auto p-4 md:p-8">
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold font-headline">Health Articles</h1>
         <p className="text-muted-foreground text-lg mt-2 max-w-2xl mx-auto">
