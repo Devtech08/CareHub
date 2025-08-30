@@ -79,7 +79,7 @@ export default function Header() {
             <span className="font-bold hidden sm:inline-block">CareHub</span>
           </Link>
         </div>
-        <nav className="hidden md:flex items-center gap-6 flex-1 justify-center">
+        <nav className="hidden md:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
